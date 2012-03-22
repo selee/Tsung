@@ -1,0 +1,8 @@
+{release,{"tsung_controller","1.4.2"},
+         {erts,"5.8.5"},
+         [{crypto,"2.0.4"},
+          {public_key,"0.13"},
+          {ssl,"4.1.6"},
+          {stdlib,"1.17.5"},
+          {kernel,"2.14.5"},
+          {tsung_controller,"1.4.2"}]}.

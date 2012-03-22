@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/usr/share/tsung/tsung-1.0.dtd">
+<tsung loglevel="notice">
+
+  <clients>
+    <client host="localhost" use_controller_vm="true"/>
+  </clients>
+
+  <!-- Server side setup -->
+ <servers>
+  <server host="69.10.20.121" port="10746" type="tcp"/>
+ </servers>
+
+  <!--
+	<monitoring>
+   <monitor host="localhost"/>
+  </monitoring>
+	-->
+  
+ <load>
+  <arrivalphase phase="1" duration="5" unit="minute">
+    <users interarrival="10" unit="second"></users>
+  </arrivalphase>
+ </load>
+
+ <sessions>
+  <session probability="100" name="test-example" type="ts_test">
+    <thinktime value="12"/>
+
+    <transaction name="proxy">
+      <request>
+	  <test>132 0 0 0 1 128 255 255 254 234 96 0 0 0 0 64</test>
+	</request>
+    </transaction>
+
+  </session>
+ </sessions>
+</tsung>
+

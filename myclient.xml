@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/usr/share/tsung/tsung-1.0.dtd">
+<tsung loglevel="notice">
+
+  <clients>
+    <client host="localhost" use_controller_vm="true"/>
+  </clients>
+
+  <!-- Server side setup -->
+ <servers>
+  <server host="69.10.20.121" port="10746" type="udp"/>
+ </servers>
+
+  <monitoring>
+   <monitor host="localhost"/>
+  </monitoring>
+  
+ <load>
+  <arrivalphase phase="1" duration="5" unit="minute">
+    <users interarrival="10" unit="second"></users>
+  </arrivalphase>
+ </load>
+
+ <sessions>
+  <session probability="100" name="myclient-example" type="ts_myclient">
+    <!--<transaction name="echo">
+      <request>
+	  <match do="continue" when="match">Hello world again</match>
+	  <myclient type="echo">Hello world again</myclient>	  
+      </request>
+    </transaction>
+
+    <thinktime value="12"/>
+-->
+    <transaction name="add">
+      <request>
+	  <myclient type="compute" arith="add">4 5</myclient>
+	</request>
+    </transaction>
+
+    <thinktime value="6"/>
+
+    <transaction name="sub">
+      <request>
+	  <myclient type="compute" arith="sub">9 3</myclient>
+	</request>
+    </transaction>
+
+  </session>
+ </sessions>
+</tsung>
+
